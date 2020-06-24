@@ -15,6 +15,7 @@ repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+
 }
 
 dependencies {
@@ -53,5 +54,26 @@ dependencies {
     // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
     //compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 
+    //implementation 'org.yaml:snakeyaml:1.26'
+
+    // lib フォルダ直下の jar を全て指定
+    compile fileTree(dir: 'importjar', include: '*.jar')
+
     //ここまで
 }
+
+//ここから
+
+apply plugin: 'application'
+
+mainClassName = 'net.nanai10a.discord.bot.twomeat.Main'
+
+apply plugin: 'java'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+
+
+//ここまで

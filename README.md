@@ -1,2 +1,6 @@
 # 2Meat
-作り直したDiscord-Bot:2Meat。途中からPublicにしてますので最初はPrivateで作業してます。
+作り直したDiscord-Bot:2Meat。  
+最初のうちはレビューするほどのコードではないのでご容赦を。
+
+README.mdはまだ読むに値しません。(書いてません)  
+以上です。
