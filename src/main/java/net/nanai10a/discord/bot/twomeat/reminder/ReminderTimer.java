@@ -1,11 +1,13 @@
 package net.nanai10a.discord.bot.twomeat.reminder;
 
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
 
-public class ReminderTimer extends Object {
+public class ReminderTimer extends ListenerAdapter {
 
 
     private int id;
@@ -14,13 +16,19 @@ public class ReminderTimer extends Object {
     public ReminderTimer(int id) {
         this.id = id;
     }
-    public void addSchedule(TimerTask task, Date date) {
+
+    @Override
+    public void onMessageReceived(MessageReceivedEvent event) {
+
+    }
+
+    private void addSchedule(TimerTask task, Date date) {
         timer.schedule(task, date);
     }
-    public void changeSchedule() {
+    private void changeSchedule() {
         //timer.schedule();
     }
-    public void deleteSchedule() {
+    private void deleteSchedule() {
 
     }
 }

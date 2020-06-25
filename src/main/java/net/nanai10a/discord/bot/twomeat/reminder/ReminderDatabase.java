@@ -1,4 +1,6 @@
 package net.nanai10a.discord.bot.twomeat.reminder;
 
-public interface ReminderDatabase {
+interface ReminderDatabase {
+    void dump();
+    void load();
 }

@@ -1,8 +1,10 @@
 package net.nanai10a.discord.bot.twomeat.reminder;
 
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+
 import java.util.concurrent.ConcurrentHashMap;
 
-public class Id extends Object {
+public class Id extends ListenerAdapter {
     private static ConcurrentHashMap<Integer, Id> idRepository = new ConcurrentHashMap<>();
 
     private int num;

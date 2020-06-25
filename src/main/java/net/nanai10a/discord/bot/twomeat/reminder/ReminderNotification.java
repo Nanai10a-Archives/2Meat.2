@@ -1,4 +1,5 @@
 package net.nanai10a.discord.bot.twomeat.reminder;
 
-public interface ReminderNotification {
+interface ReminderNotification {
+    void Notification(Object item);
 }
