@@ -1,5 +1,8 @@
 package net.nanai10a.discord.bot.twomeat.reminder;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Id extends Object {
@@ -28,7 +31,7 @@ public class Id extends Object {
         }
     }
 
-    public static void register(int num, IdCommand command, Object object) {
+    public static void register(int num, @NonNull IdCommand command, Object object) {
         /*
         ここは管理インスタンスが増える度にcaseを追加しないといけない。
         もっといい方法があればそっちにする。
