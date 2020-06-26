@@ -1,10 +1,11 @@
 package net.nanai10a.discord.bot.twomeat.reminder;
 
-import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import javax.annotation.Nullable;
 
-public class DiscordReminderNotification extends ListenerAdapter implements ReminderNotification {
+public class DiscordReminderNotification extends Object implements ReminderNotification {
+
     @Override
-    public void Notification(Object item) {
+    public void Notification(@Nullable Object item) {
 
     }
 }

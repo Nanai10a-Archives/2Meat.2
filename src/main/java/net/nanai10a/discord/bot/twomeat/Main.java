@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws LoginException, IOException, InterruptedException {
-        JDA jda = JDABuilder.createDefault("")
+        JDA jda = JDABuilder.createDefault(args[0])
                 .addEventListeners(new Measure())
                 .build();
         jda.awaitReady();

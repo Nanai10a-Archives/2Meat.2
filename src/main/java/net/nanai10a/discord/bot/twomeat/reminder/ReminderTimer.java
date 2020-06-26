@@ -1,13 +1,13 @@
 package net.nanai10a.discord.bot.twomeat.reminder;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
+import javax.annotation.Nonnull;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class ReminderTimer extends ListenerAdapter {
+public class ReminderTimer extends Object implements Listener {
 
 
     private int id;
@@ -15,11 +15,7 @@ public class ReminderTimer extends ListenerAdapter {
 
     public ReminderTimer(int id) {
         this.id = id;
-    }
-
-    @Override
-    public void onMessageReceived(MessageReceivedEvent event) {
-
+        DiscordListener.addListener(this);
     }
 
     private void addSchedule(TimerTask task, Date date) {
@@ -30,5 +26,18 @@ public class ReminderTimer extends ListenerAdapter {
     }
     private void deleteSchedule() {
 
+    }
+
+    @Override
+    public void onEvent(@Nonnull Object event) {
+        if (event instanceof MessageReceivedEvent /*|| 追加するときはここに*/) {
+
+        }//elseはいらんやろ、実質ListenerAdapterのそれと一緒だし、空実装だと思えば
+        /*
+        まず何のeventインスタンスなのか判定してそれにアップキャストする
+        text:んでもってコマンド(startWith)を判定する
+        そしてidを参照する
+        アクションする
+         */
     }
 }

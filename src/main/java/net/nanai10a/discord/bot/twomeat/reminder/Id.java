@@ -2,9 +2,10 @@ package net.nanai10a.discord.bot.twomeat.reminder;
 
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
+import javax.annotation.Nonnull;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class Id extends ListenerAdapter {
+public class Id extends Object implements Listener {
     private static ConcurrentHashMap<Integer, Id> idRepository = new ConcurrentHashMap<>();
 
     private int num;
@@ -68,6 +69,11 @@ public class Id extends ListenerAdapter {
             nulle.printStackTrace();
             //nullpointerしました通知
         }
+    }
+
+    @Override
+    public void onEvent(@Nonnull Object event) {
+
     }
 }
 
