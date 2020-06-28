@@ -8,8 +8,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class DiscordReminderSender implements ReminderSender, Listener {
-    private int id;
-    private JDA jda;
+    private final int id;
+    private final JDA jda;
 
     public DiscordReminderSender(int id, JDA jda) {
         this.id = id;

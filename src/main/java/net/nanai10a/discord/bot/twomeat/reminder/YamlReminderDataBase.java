@@ -8,8 +8,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class YamlReminderDataBase implements ReminderDataBase, Listener {
-    private int id;
-    private JDA jda;
+    private final int id;
+    private final JDA jda;
 
     public  YamlReminderDataBase(int id, JDA jda) {
         this.id = id;

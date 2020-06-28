@@ -1,26 +1,30 @@
 package net.nanai10a.discord.bot.twomeat.reminder;
 
 import net.dv8tion.jda.api.JDA;
-import net.nanai10a.discord.bot.twomeat.DiscordListener;
-import net.nanai10a.discord.bot.twomeat.Listener;
+import net.nanai10a.discord.bot.twomeat.*;
 
 import javax.annotation.Nonnull;
 
-public class Reminder implements Listener {
-    private JDA jda;
-    private int id;
+public class Reminder implements CommandListener {
+    private final Integer id;
+    private final JDA jda;
+    private final ReminderTimer reminderTimer;
+    private final ReminderSender ReminderSender;
+    private final ReminderDataBase reminderDataBase;
 
-    public Reminder(int id, JDA jda) {
+    public Reminder(Integer id, JDA jda) {
+        jda.getTextChannelById("690909527461199922").sendMessage("2-Reminder(Test):作り出す手前まで来てますよ、いいね。").queue();
         this.id = id;
         this.jda = jda;
-        DiscordListener.addListener(this);
-        new ReminderTimer(id, jda);
-        new DiscordReminderSender(id, jda);
-        new YamlReminderDataBase(id, jda);
+        this.reminderTimer = new ReminderTimer(id, jda);
+        this.ReminderSender = new DiscordReminderSender(id, jda);
+        this.reminderDataBase = new YamlReminderDataBase(id, jda);
+
+        DiscordCommandListener.addListener(this);
     }
 
     @Override
-    public void onEvent(@Nonnull Object event) {
+    public void onCommandEvent(@Nonnull ProcessedCommand item) {
         /*
         コマンド検知→privateメソッド呼び出し
         Reminderインスタンスを(変更・)削除ができます

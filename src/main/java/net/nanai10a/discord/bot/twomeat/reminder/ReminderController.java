@@ -1,12 +1,12 @@
 package net.nanai10a.discord.bot.twomeat.reminder;
 
 import net.dv8tion.jda.api.JDA;
-import net.nanai10a.discord.bot.twomeat.DiscordListener;
-import net.nanai10a.discord.bot.twomeat.Listener;
+import net.nanai10a.discord.bot.twomeat.*;
 
 import javax.annotation.Nonnull;
+import java.util.regex.Pattern;
 
-public class ReminderController implements Listener {
+public class ReminderController implements CommandListener {
     /*
     一個しかインスタンスを作らないクラス。(但し機能の複製が可能になると複数個出来るが、管理するnumがもう一次元増える…)
      */
@@ -14,7 +14,7 @@ public class ReminderController implements Listener {
 
     public ReminderController(@Nonnull JDA jda) {
         this.jda = jda;
-        DiscordListener.addListener(this);
+        DiscordCommandListener.addListener(this);
         /*
         初期化しましょう
          */
@@ -23,10 +23,32 @@ public class ReminderController implements Listener {
          */
     }
 
+    @Override
+    public void onCommandEvent(@Nonnull ProcessedCommand item) {
+        if (item.getPatternMatched()) {
+            if (item.getServiceName().equals("ReminderController") &&
+                    item.getMethodName().equals("createReminder") &&
+                    item.getId().equals(0)) {
+                if (Pattern.matches("\\d", item.getArg())) {
+                    new Reminder(Integer.parseInt(item.getArg()), jda);
+                } else {
+                    item.getMessageChannel().sendMessage("2-ReminderController:idが不正です").queue();
+                }
+            }
+        }
+    }
+
     private void createReminder(int id) {
         new Reminder(id, jda);
     }
-    @Override
-    public void onEvent(@Nonnull Object event) {
-    }
 }
+
+/*
+if (item.getPatternMatched()) {
+            if (item.getServiceName().equals("ReminderController") &&
+                    item.getMethodName().equals("createReminder") &&
+                    item.getId().equals(0)) {
+
+            }
+        }
+ */

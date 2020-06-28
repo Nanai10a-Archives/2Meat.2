@@ -1,2 +1,3 @@
 Manifest-Version: 1.0
+Main-Class: net.nanai10a.discord.bot.twomeat.Main
 
