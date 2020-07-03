@@ -9,7 +9,7 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws LoginException, IOException, InterruptedException {
-        JDA jda = JDABuilder.createDefault("NzEwNTA3NzY2MzM0MDk1Mzcw.XvOpRg.rUjUsxrwe0hTotGntGDwg-lyHrU")
+        JDA jda = JDABuilder.createDefault(System.getenv("DISCORD_TOKEN"))
                 //.addEventListeners(new Measure())
                 //.addEventListeners(new DiscordListener())
                 .addEventListeners(new DiscordCommandListener())

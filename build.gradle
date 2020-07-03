@@ -35,6 +35,6 @@ tasks.withType(JavaCompile) {
 
 jar {
     manifest {
-        attributes 'Main-Class': "net.nanai10a.discord.bot.twomeat.Main"
+        attributes 'Main-Class': "net.nanai10a.twomeat.Main"
     }
 }

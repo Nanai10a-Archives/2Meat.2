@@ -1,10 +1,10 @@
 package net.nanai10a.twomeat;
 
 import net.dv8tion.jda.api.JDA;
-import net.nanai10a.discord.bot.twomeat.reminder.DiscordReminderSender;
-import net.nanai10a.discord.bot.twomeat.reminder.Reminder;
-import net.nanai10a.discord.bot.twomeat.reminder.ReminderTimer;
-import net.nanai10a.discord.bot.twomeat.reminder.YamlReminderDataBase;
+import net.nanai10a.twomeat.reminder.DiscordReminderSender;
+import net.nanai10a.twomeat.reminder.Reminder;
+import net.nanai10a.twomeat.reminder.ReminderTimer;
+import net.nanai10a.twomeat.reminder.YamlReminderDataBase;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
