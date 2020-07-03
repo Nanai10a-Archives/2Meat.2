@@ -29,6 +29,9 @@ if "%DIRNAME%" == "" set DIRNAME=.
 set APP_BASE_NAME=%~n0
 set APP_HOME=%DIRNAME%..
 
+@rem Resolve any "." and ".." in APP_HOME to make it shorter.
+for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
+
 @rem Add default JVM options here. You can also use JAVA_OPTS and 2_MEAT_OPTS to pass JVM options to this script.
 set DEFAULT_JVM_OPTS=
 
@@ -79,10 +82,11 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\2Meat.jar;%APP_HOME%\lib\snakeyaml-1.25.jar;%APP_HOME%\lib\commons-math3-3.6.1.jar;%APP_HOME%\lib\JDA-4.1.1_156.jar;%APP_HOME%\lib\slf4j-simple-1.7.30.jar;%APP_HOME%\lib\jda-utilities-examples-3.0.3.jar;%APP_HOME%\lib\jda-utilities-command-3.0.3.jar;%APP_HOME%\lib\slf4j-api-1.7.30.jar;%APP_HOME%\lib\guava-28.0-jre.jar;%APP_HOME%\lib\jda-utilities-menu-3.0.3.jar;%APP_HOME%\lib\jda-utilities-oauth2-3.0.3.jar;%APP_HOME%\lib\jsr305-3.0.2.jar;%APP_HOME%\lib\annotations-16.0.1.jar;%APP_HOME%\lib\nv-websocket-client-2.9.jar;%APP_HOME%\lib\okhttp-3.13.0.jar;%APP_HOME%\lib\opus-java-1.0.4.pom;%APP_HOME%\lib\commons-collections4-4.1.jar;%APP_HOME%\lib\trove4j-3.0.3.jar;%APP_HOME%\lib\jackson-databind-2.10.1.jar;%APP_HOME%\lib\jda-utilities-doc-3.0.3.jar;%APP_HOME%\lib\jda-utilities-commons-3.0.3.jar;%APP_HOME%\lib\failureaccess-1.0.1.jar;%APP_HOME%\lib\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;%APP_HOME%\lib\checker-qual-2.8.1.jar;%APP_HOME%\lib\error_prone_annotations-2.3.2.jar;%APP_HOME%\lib\j2objc-annotations-1.3.jar;%APP_HOME%\lib\animal-sniffer-annotations-1.17.jar;%APP_HOME%\lib\okio-1.17.2.jar;%APP_HOME%\lib\opus-java-api-1.0.4.jar;%APP_HOME%\lib\opus-java-natives-1.0.4.jar;%APP_HOME%\lib\jackson-annotations-2.10.1.jar;%APP_HOME%\lib\jackson-core-2.10.1.jar;%APP_HOME%\lib\json-20160810.jar;%APP_HOME%\lib\jna-4.4.0.jar
+set CLASSPATH=%APP_HOME%\lib\2Meat.jar;%APP_HOME%\lib\JDA-4.1.1_156.jar;%APP_HOME%\lib\slf4j-simple-1.7.30.jar;%APP_HOME%\lib\jda-utilities-examples-3.0.3.jar;%APP_HOME%\lib\jda-utilities-command-3.0.3.jar;%APP_HOME%\lib\slf4j-api-1.7.30.jar;%APP_HOME%\lib\eo-yaml-5.1.3.jar;%APP_HOME%\lib\guava-28.2-jre.jar;%APP_HOME%\lib\jda-utilities-menu-3.0.3.jar;%APP_HOME%\lib\jda-utilities-oauth2-3.0.3.jar;%APP_HOME%\lib\jsr305-3.0.2.jar;%APP_HOME%\lib\annotations-16.0.1.jar;%APP_HOME%\lib\nv-websocket-client-2.9.jar;%APP_HOME%\lib\okhttp-3.13.0.jar;%APP_HOME%\lib\opus-java-1.0.4.pom;%APP_HOME%\lib\commons-collections4-4.1.jar;%APP_HOME%\lib\trove4j-3.0.3.jar;%APP_HOME%\lib\jackson-databind-2.10.1.jar;%APP_HOME%\lib\jda-utilities-doc-3.0.3.jar;%APP_HOME%\lib\jda-utilities-commons-3.0.3.jar;%APP_HOME%\lib\failureaccess-1.0.1.jar;%APP_HOME%\lib\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;%APP_HOME%\lib\checker-qual-2.10.0.jar;%APP_HOME%\lib\error_prone_annotations-2.3.4.jar;%APP_HOME%\lib\j2objc-annotations-1.3.jar;%APP_HOME%\lib\okio-1.17.2.jar;%APP_HOME%\lib\opus-java-api-1.0.4.jar;%APP_HOME%\lib\opus-java-natives-1.0.4.jar;%APP_HOME%\lib\jackson-annotations-2.10.1.jar;%APP_HOME%\lib\jackson-core-2.10.1.jar;%APP_HOME%\lib\json-20160810.jar;%APP_HOME%\lib\jna-4.4.0.jar
+
 
 @rem Execute 2Meat
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %2_MEAT_OPTS%  -classpath "%CLASSPATH%" net.nanai10a.discord.bot.twomeat.Main %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %2_MEAT_OPTS%  -classpath "%CLASSPATH%" net.nanai10a.twomeat.Main %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell
