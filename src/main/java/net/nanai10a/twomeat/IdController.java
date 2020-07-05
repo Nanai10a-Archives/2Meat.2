@@ -111,6 +111,9 @@ class Id extends Object implements Listener {
     }
 }
 
+interface IdObject {
+}
+
 enum IdCommand {
     REMINDER,
     REMINDERTIMER,

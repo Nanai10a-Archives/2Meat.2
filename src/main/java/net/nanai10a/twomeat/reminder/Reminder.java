@@ -13,14 +13,14 @@ public class Reminder implements CommandListener {
     private final ReminderDataBase reminderDataBase;
 
     public Reminder(Integer id, JDA jda) {
-        jda.getTextChannelById("690909527461199922").sendMessage("2-Reminder(Test):作り出す手前まで来てますよ、いいね。").queue();
+        jda.getTextChannelById("716658620887990312").sendMessage("2-Reminder(Test):作り出す手前まで来てますよ、いいね。").queue();
         this.id = id;
         this.jda = jda;
         this.reminderTimer = new ReminderTimer(id, jda);
         this.ReminderSender = new DiscordReminderSender(id, jda);
         this.reminderDataBase = new YamlReminderDataBase(id, jda);
 
-        DiscordCommandListener.addListener(this);
+        //DiscordCommandListener.addListener(this);
     }
 
     @Override

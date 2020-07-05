@@ -14,7 +14,7 @@ public class ReminderController implements CommandListener {
 
     public ReminderController(@Nonnull JDA jda) {
         this.jda = jda;
-        DiscordCommandListener.addListener(this);
+        //DiscordCommandListener.addListener(this);
         /*
         初期化しましょう
          */

@@ -16,7 +16,7 @@ public class ReminderTimer implements CommandListener {
     public ReminderTimer(Integer id, JDA jda) {
         this.id = id;
         this.jda = jda;
-        DiscordCommandListener.addListener(this);
+        //DiscordCommandListener.addListener(this);
     }
 
     private void addSchedule(TimerTask task, Date date) {
