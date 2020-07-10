@@ -23,7 +23,7 @@ public class Main {
         //
 
         //jda.addEventListener(new Remindering(jda));
-        jda.addEventListener(new JavaExecuter());
+        //jda.addEventListener(new JavaExecuter());
 
 
 
