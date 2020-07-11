@@ -1,4 +1,4 @@
-package net.nanai10a.twomeat;
+package net.nanai10a.old.twomeat.old.twomeat;
 
 import net.dv8tion.jda.api.entities.MessageChannel;
 

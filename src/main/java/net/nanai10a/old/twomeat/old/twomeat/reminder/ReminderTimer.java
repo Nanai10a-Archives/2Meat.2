@@ -1,7 +1,8 @@
-package net.nanai10a.twomeat.reminder;
+package net.nanai10a.old.twomeat.old.twomeat.reminder;
 
 import net.dv8tion.jda.api.JDA;
-import net.nanai10a.twomeat.*;
+import net.nanai10a.old.twomeat.old.twomeat.CommandListener;
+import net.nanai10a.old.twomeat.old.twomeat.ProcessedCommand;
 
 import javax.annotation.Nonnull;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package net.nanai10a.twomeat.reminder;
+package net.nanai10a.old.twomeat.old.twomeat.reminder;
 
 import javax.annotation.Nullable;
 

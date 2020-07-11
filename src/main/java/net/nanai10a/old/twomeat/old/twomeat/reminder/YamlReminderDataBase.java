@@ -1,8 +1,8 @@
-package net.nanai10a.twomeat.reminder;
+package net.nanai10a.old.twomeat.old.twomeat.reminder;
 
 import net.dv8tion.jda.api.JDA;
-import net.nanai10a.twomeat.DiscordListener;
-import net.nanai10a.twomeat.Listener;
+import net.nanai10a.old.twomeat.old.twomeat.DiscordListener;
+import net.nanai10a.old.twomeat.old.twomeat.Listener;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
