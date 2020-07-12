@@ -119,9 +119,9 @@ public class Config {
         }
 
         //ここは要検証。booleanがどうやって記録されるのかとか、keyがどうなるのか分からん
-        Reminder = configFileMapping.value("Reminder").equals(true);
+        //Reminder = configFileMapping.value("Reminder").equals(true);
         Dialoger = configFileMapping.value("Dialoger").equals(true);
-        ApproversStandardTime = configFileMapping.value("ApproversStandardTime").equals(true);
+        //ApproversStandardTime = configFileMapping.value("ApproversStandardTime").equals(true);
 
         fetchNum = 0;
     }

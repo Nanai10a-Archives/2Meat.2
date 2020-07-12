@@ -12,7 +12,7 @@ public class CommandProcessingService {
     public static boolean match(String rawCommand) {
         final boolean result;
 
-        if (Pattern.matches(Pattern.quote("*") + "2:.+\\..+(\\.*)", rawCommand)) {
+        if (Pattern.matches(Pattern.quote("*") + "2:.+\\..+(\\.*,*\\.*,*\\.*,*.*\\.*#*\\.*)", rawCommand)) {
             result = true;
         } else if (rawCommand.startsWith("*2:") && !Pattern.matches(Pattern.quote("*") + "2:.+\\..+(\\.*)", rawCommand)) {
             result = false;
@@ -25,7 +25,8 @@ public class CommandProcessingService {
     public static CommandMatch matchx(String rawCommand) {
         final CommandMatch result;
 
-        if (Pattern.matches(Pattern.quote("*") + "2:.+\\..+(\\.*)", rawCommand)) {
+        //(引数が増える度に[\.*,*]を増やさないといけない、どうしよ)
+        if (Pattern.matches(Pattern.quote("*") + "2:.+\\..+(\\.*,*\\.*,*\\.*,*.*\\.*)", rawCommand)) {
             result = CommandMatch.MATCH;
         } else if (rawCommand.startsWith("*2:") && !Pattern.matches(Pattern.quote("*") + "2:.+\\..+(\\.*)", rawCommand)) {
             result = CommandMatch.NOMATCH;

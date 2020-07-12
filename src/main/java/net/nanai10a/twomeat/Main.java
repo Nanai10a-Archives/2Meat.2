@@ -1,10 +1,13 @@
 package net.nanai10a.twomeat;
 
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.nanai10a.twomeat.jda.Bot;
 
-public class Main {
+import javax.security.auth.login.LoginException;
 
-    public static void main(String[] args) {
+public class Main extends ListenerAdapter {
+
+    public static void main(String[] args) throws LoginException, InterruptedException {
         new Bot();
     }
 }

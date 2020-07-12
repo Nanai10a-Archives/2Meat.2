@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.nanai10a.twomeat.CommandProcessingService;
+import net.nanai10a.twomeat.dialoger.Dialoger;
 import net.nanai10a.twomeat.yaml.Config;
 import net.nanai10a.twomeat.yaml.ConfigItem;
 
@@ -20,24 +21,25 @@ public class Bot extends ListenerAdapter {
     public Bot() throws LoginException, InterruptedException {
         JDA = JDABuilder.createDefault(System.getenv("DISCORD_TOKEN_2MEAT"))
                 .addEventListeners(this)
+                .addEventListeners(new Dialoger())
                 .build();
         JDA.awaitReady();
 
-        //LISTENERS.put("", new);
+        //LISTENERS.put("Dialoger", new Dialoger());
 
 
     }
 
     private void fetchConfig() {
-        ISABLE.put("Reminder", Config.isReminder());
+        //ISABLE.put("Reminder", Config.isReminder());
         ISABLE.put("Dialoger", Config.isDialoger());
-        ISABLE.put("ApproversStandardTime", Config.isApproversStandardTime());
+        //ISABLE.put("ApproversStandardTime", Config.isApproversStandardTime());
     }
 
     private void saveConfig() {
-        Config.save(ConfigItem.REMINDER, ISABLE.get("Reminder"));
+        //Config.save(ConfigItem.REMINDER, ISABLE.get("Reminder"));
         Config.save(ConfigItem.DIALOGER, ISABLE.get("Dialoger"));
-        Config.save(ConfigItem.APPROVERSSTANDARDTIME, ISABLE.get("ApproversStandardTime"));
+        //Config.save(ConfigItem.APPROVERSSTANDARDTIME, ISABLE.get("ApproversStandardTime"));
     }
 
     private String enableListener(String listenerName) {
@@ -64,9 +66,12 @@ public class Bot extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
+        //ぬるぽめっちゃする
+        /*
         if (!event.getAuthor().isBot()) {
             isMatch(event.getMessage().getContentRaw(), event.getChannel());
         }
+         */
     }
 
     private void isMatch(String rawMessage, MessageChannel channel) {
