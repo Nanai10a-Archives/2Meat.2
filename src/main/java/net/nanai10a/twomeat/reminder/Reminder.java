@@ -1,41 +1,87 @@
 package net.nanai10a.twomeat.reminder;
 
-import net.dv8tion.jda.api.JDA;
-import net.nanai10a.twomeat.*;
+import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.nanai10a.twomeat.CommandProcessingService;
 
-import javax.annotation.Nonnull;
+import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class Reminder implements CommandListener {
-    private final Integer id;
-    private final JDA jda;
-    private final ReminderTimer reminderTimer;
-    private final ReminderSender ReminderSender;
-    private final ReminderDataBase reminderDataBase;
+public class Reminder extends ListenerAdapter {
+    private final Timer TIMER = new Timer(true);
+    private final ConcurrentHashMap<String, TimerTask> QUEUE = new ConcurrentHashMap<>();
 
-    public Reminder(Integer id, JDA jda) {
-        jda.getTextChannelById("716658620887990312").sendMessage("2-Reminder(Test):作り出す手前まで来てますよ、いいね。").queue();
-        this.id = id;
-        this.jda = jda;
-        this.reminderTimer = new ReminderTimer(id, jda);
-        this.ReminderSender = new DiscordReminderSender(id, jda);
-        this.reminderDataBase = new YamlReminderDataBase(id, jda);
 
-        //DiscordCommandListener.addListener(this);
+    public Reminder() {
+
+
+
     }
+
+    private void setOneSchedule() {
+
+    }
+
+    private void setMultipleSchedule() {
+
+    }
+
+    private void deleteSchedule() {
+
+    }
+
+    private void changeSchedule() {
+
+    }
+
+    private void getQueue() {
+
+    }
+
+
 
     @Override
-    public void onCommandEvent(@Nonnull ProcessedCommand item) {
-        /*
-        コマンド検知→privateメソッド呼び出し
-        Reminderインスタンスを(変更・)削除ができます
-         */
+    public void onMessageReceived(MessageReceivedEvent event) {
+        if (!event.getAuthor().isBot()) {
+            isMatch(event.getMessage().getContentRaw(), event.getChannel());
+        }
     }
 
-    private void changeReminder() {
+    private void isMatch(String rawMessage, MessageChannel channel) {
 
+        if (CommandProcessingService.match(rawMessage)) {
+            onMethod(CommandProcessingService.process(rawMessage), channel);
+        }
     }
 
-    private void deleteReminder() {
+    private void onMethod(String command, MessageChannel channel) {
+        final String message;
 
+        if (command.startsWith("Reminder.add")) {
+            var listenerName = command.substring(command.indexOf("(") + 1, command.indexOf(")"));
+
+        } else if (command.startsWith("Reminder.change")) {
+            var listenerName = command.substring(command.indexOf("(") + 1, command.indexOf(")"));
+
+        } else if (command.startsWith("Reminder.delete")) {
+            var listenerName = command.substring(command.indexOf("(") + 1, command.indexOf(")"));
+
+        } else if (command.startsWith("Reminder.queue")) {
+            var listenerName = command.substring(command.indexOf("(") + 1, command.indexOf(")"));
+
+        } else if (command.startsWith("Reminder.delet")) {
+            var listenerName = command.substring(command.indexOf("(") + 1, command.indexOf(")"));
+
+        } else if (command.startsWith("Reminder.delet")) {
+            var listenerName = command.substring(command.indexOf("(") + 1, command.indexOf(")"));
+
+        } else {
+            message = "`メソッド名が不正です`";
+        }
+
+        //channel.sendMessage("2:Reminder | " + message).queue();
     }
 }
