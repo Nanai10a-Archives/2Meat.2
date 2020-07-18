@@ -4,13 +4,11 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.nanai10a.twomeat.CommandProcessingService;
-import net.nanai10a.twomeat.jda.ReactionBlockingQueue;
 import net.nanai10a.twomeat.yaml.InclusiveList;
 import net.nanai10a.twomeat.yaml.PerfectList;
 import net.nanai10a.twomeat.yaml.ReactionMap;
 import net.nanai10a.twomeat.yaml.SpecifiedLocationMap;
 
-import javax.swing.text.Position;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
