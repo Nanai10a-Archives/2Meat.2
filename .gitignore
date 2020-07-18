@@ -11,3 +11,9 @@ gradlew
 gradlew.bat
 
 2Meat.iml
+
+Config.yaml
+ReactionMap.yaml
+PerfectList.yaml
+InclusiveList.yaml
+SpecifiedLocationMap.yaml
