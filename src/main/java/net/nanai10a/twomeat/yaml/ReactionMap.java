@@ -23,10 +23,14 @@ public class ReactionMap {
     }
 
     private final Yaml YAML = new Yaml();
-    private final File FILE = Paths.get("ReactionMap.yaml").toFile();
+    private final File FILE;
 
     private ReactionMap() throws IOException {
-        if (!(new File("ReactionMap.yaml").exists())) new File("ReactionMap.yaml").createNewFile();
+        if (!(new File("ReactionMap.yaml").exists())) {
+            new File("ReactionMap.yaml").createNewFile();
+            FILE = new File("ReactionMap.yaml");
+        }
+        else FILE = Paths.get("ReactionMap.yaml").toFile();
     }
 
     public static Map<String, String> load() throws IOException {

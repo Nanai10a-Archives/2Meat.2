@@ -2,10 +2,7 @@ package net.nanai10a.twomeat.yaml;
 
 import org.yaml.snakeyaml.Yaml;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -23,10 +20,14 @@ public class InclusiveList {
     }
 
     private final Yaml YAML = new Yaml();
-    private final File FILE = Paths.get("InclusiveList.yaml").toFile();
+    private final File FILE;
 
     private InclusiveList() throws IOException {
-        if (!(new File("InclusiveList").exists())) new File("InclusiveList").createNewFile();
+        if (!(new File("InclusiveList.yaml").exists())) {
+            new File("InclusiveList.yaml").createNewFile();
+            FILE = new File("InclusiveList.yaml");
+        }
+        else FILE = Paths.get("InclusiveList.yaml").toFile();
     }
 
     public static List<String> load() throws IOException {

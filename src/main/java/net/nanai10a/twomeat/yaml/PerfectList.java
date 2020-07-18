@@ -23,10 +23,14 @@ public class PerfectList {
     }
 
     private final Yaml YAML = new Yaml();
-    private final File FILE = Paths.get("PerfectList.yaml").toFile();
+    private final File FILE;
 
     private PerfectList() throws IOException {
-        if (!(new File("PerfectList.yaml").exists())) new File("PerfectList.yaml").createNewFile();
+        if (!(new File("PerfectList.yaml").exists())) {
+            new File("PerfectList.yaml").createNewFile();
+            FILE = new File("PerfectList.yaml");
+        }
+        else FILE = Paths.get("PerfectList.yaml").toFile();
     }
 
     public static List<String> load() throws IOException {

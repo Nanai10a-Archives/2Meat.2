@@ -23,10 +23,14 @@ public class SpecifiedLocationMap {
     }
 
     private final Yaml YAML = new Yaml();
-    private final File FILE = Paths.get("SpecifiedLocationMap.yaml").toFile();
+    private final File FILE;
 
     private SpecifiedLocationMap() throws IOException {
-        if (!(new File("SpecifiedLocationMap.yaml").exists())) new File("SpecifiedLocationMap.yaml").createNewFile();
+        if (!(new File("SpecifiedLocationMap.yaml").exists())) {
+            new File("SpecifiedLocationMap.yaml").createNewFile();
+            FILE = new File("SpecifiedLocationMap.yaml");
+        }
+        else FILE = Paths.get("SpecifiedLocationMap.yaml").toFile();
     }
 
     public static Map<String, Integer> load() throws IOException {
