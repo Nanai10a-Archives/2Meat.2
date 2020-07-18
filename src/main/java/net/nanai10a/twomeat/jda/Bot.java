@@ -11,35 +11,35 @@ import net.nanai10a.twomeat.yaml.Config;
 import net.nanai10a.twomeat.yaml.ConfigItem;
 
 import javax.security.auth.login.LoginException;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class Bot extends ListenerAdapter {
+
     private final JDA JDA;
     private final HashMap<String, ListenerAdapter> LISTENERS = new HashMap<>();
     private final HashMap<String, Boolean> ISABLE = new HashMap<>();
 
-    public Bot() throws LoginException, InterruptedException {
+    public Bot() throws LoginException, InterruptedException, IOException {
         JDA = JDABuilder.createDefault(System.getenv("DISCORD_TOKEN_2MEAT"))
                 .addEventListeners(this)
-                .addEventListeners(new Dialoger())
                 .build();
         JDA.awaitReady();
 
-        //LISTENERS.put("Dialoger", new Dialoger());
+        fetchConfig();
+        //Configと連携しようね…(今後に期待)
 
+        LISTENERS.put("Dialoger", new Dialoger());
 
+        if (ISABLE.get("Dialoger")) {
+            JDA.addEventListener(LISTENERS.get("Dialoger"));
+        }
     }
 
     private void fetchConfig() {
-        //ISABLE.put("Reminder", Config.isReminder());
-        ISABLE.put("Dialoger", Config.isDialoger());
-        //ISABLE.put("ApproversStandardTime", Config.isApproversStandardTime());
-    }
-
-    private void saveConfig() {
-        //Config.save(ConfigItem.REMINDER, ISABLE.get("Reminder"));
-        Config.save(ConfigItem.DIALOGER, ISABLE.get("Dialoger"));
-        //Config.save(ConfigItem.APPROVERSSTANDARDTIME, ISABLE.get("ApproversStandardTime"));
+        //ISABLE.put("Reminder", Config.getIsUsable(ConfigItem.Reminder));
+        ISABLE.put("Dialoger", Config.getIsUsable(ConfigItem.Dialoger));
+        //ISABLE.put("ApproversStandardTime", Config.getIsUsable(ConfigItem.ApproversStandardTime));
     }
 
     private String enableListener(String listenerName) {
@@ -66,12 +66,11 @@ public class Bot extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        //ぬるぽめっちゃする
-        /*
+        //ぬるぽするらしい
         if (!event.getAuthor().isBot()) {
             isMatch(event.getMessage().getContentRaw(), event.getChannel());
         }
-         */
+
     }
 
     private void isMatch(String rawMessage, MessageChannel channel) {
@@ -91,32 +90,32 @@ public class Bot extends ListenerAdapter {
     private void onMethod(String command, MessageChannel channel) {
         final String message;
 
-        if (command.startsWith("Bot.enableListener")) {
-            var listenerName = command.substring(command.indexOf("(") + 1, command.indexOf(")"));
-            fetchConfig();
-            if (!ISABLE.get(listenerName)) {
-                enableListener(listenerName);
-                ISABLE.put(listenerName, true);
-                message = "`\"" + listenerName + "\"は有効化されました`";
-            } else {
-                message = "`\"" + listenerName + "\"は既に有効化されています`";
-            }
+        if (command.startsWith("Bot")) {
+            if (command.startsWith("Bot.enableListener")) {
+                var listenerName = command.substring(command.indexOf("(") + 1, command.indexOf(")"));
+                fetchConfig();
+                if (!ISABLE.get(listenerName)) {
+                    enableListener(listenerName);
+                    ISABLE.put(listenerName, true);
+                    message = "`\"" + listenerName + "\"は有効化されました`";
+                } else {
+                    message = "`\"" + listenerName + "\"は既に有効化されています`";
+                }
 
-        } else if (command.startsWith("Bot.disableListener")) {
-            var listenerName = command.substring(command.indexOf("(") + 1, command.indexOf(")"));
-            if (ISABLE.get(listenerName)) {
-                disableListener(listenerName);
-                ISABLE.put(listenerName, false);
-                message = "`\"" + listenerName + "\"は無効化されました`";
-            } else {
-                message = "`\"" + listenerName + "\"は既に無効化されています`";
-            }
+            } else if (command.startsWith("Bot.disableListener")) {
+                var listenerName = command.substring(command.indexOf("(") + 1, command.indexOf(")"));
+                if (ISABLE.get(listenerName)) {
+                    disableListener(listenerName);
+                    ISABLE.put(listenerName, false);
+                    message = "`\"" + listenerName + "\"は無効化されました`";
+                } else {
+                    message = "`\"" + listenerName + "\"は既に無効化されています`";
+                }
 
-        } else {
-            message = "`メソッド名が不正です`";
+            } else {
+                message = "`メソッド名が不正です`";
+            }
+            channel.sendMessage("2:Bot | " + message).queue();
         }
-
-        channel.sendMessage("2:Bot | " + message).queue();
-        saveConfig();
     }
 }
