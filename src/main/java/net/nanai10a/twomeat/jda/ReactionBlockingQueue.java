@@ -15,20 +15,22 @@ public class ReactionBlockingQueue {
     private static LinkedBlockingQueue<QueueRunnable> QUEUE = new LinkedBlockingQueue<>();
     private static ConcurrentHashMap<Instant, QueueRunnable> QUEUETIME = new ConcurrentHashMap<>();
 
+    private static final Object lockObject = new Object();
+
     static {
         new Thread(() -> new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                ReactionBlockingQueue.remove();
+                new Thread(ReactionBlockingQueue::remove);
             }
-        }, 0, TimeUnit.SECONDS.toMillis(5))).start();
+        }, 0, TimeUnit.SECONDS.toMillis(30))).start();
 
         new Thread(() -> new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                ReactionBlockingQueue.run();
+                new Thread(ReactionBlockingQueue::run);
             }
-        }, 0, 10)).start();
+        }, 0, 1)).start();
     }
 
     public static void request(Runnable request, MessageChannel channel) {
@@ -45,6 +47,7 @@ public class ReactionBlockingQueue {
     }
 
     private static void remove() {
+        synchronized (lockObject) {
             var removedQueueChannelList = new HashMap<String, Integer>();
 
             for (Instant queueTime : QUEUETIME.keySet()) {
@@ -85,6 +88,7 @@ public class ReactionBlockingQueue {
                      */
                 }
             }
+        }
     }
 }
 
