@@ -424,6 +424,8 @@ public class Dialoger extends ListenerAdapter {
                             + ".help([※この引数は無視されます])" + System.lineSeparator()
                             + "- this one..." + System.lineSeparator()
                             + System.lineSeparator()
+                            + "※引数に ( # , ) を入れると例外が発生します、そうならないように引数を渡してやると良いと思います。申し訳ありません。" + System.lineSeparator()
+                            + System.lineSeparator()
                             + "- - - - - - - - - - - - - - -" + System.lineSeparator()
                             + "```";
                 } else {
@@ -438,7 +440,7 @@ public class Dialoger extends ListenerAdapter {
                     //channel.sendMessage("2:Dialoger | " + message).queue();
                 //} , channel);
             } catch (StringIndexOutOfBoundsException | IOException e) {
-                var exceptionMessage = "`例外のお知らせです。責任者来いやｵﾗｯ!`" + "@Nanai10a#0382" + System.lineSeparator()
+                var exceptionMessage = "`例外のお知らせです。責任者来いやｵﾗｯ!`" + "<@!723382133388738601>" + System.lineSeparator()
                         + "```" + System.lineSeparator()
                         + e.getMessage() + System.lineSeparator()
                         + "```";
