@@ -14,8 +14,8 @@ dependencies {
     implementation 'com.google.guava:guava:28.2-jre'
     testImplementation 'junit:junit:4.12'
 
-    compile group: 'net.dv8tion', name: 'JDA', version: '4.1.1_156'
-    compile group: 'com.jagrosh', name: 'jda-utilities', version: '3.0.3'
+    compile group: 'net.dv8tion', name: 'JDA', version: '4.2.0_180'
+    //compile group: 'com.jagrosh', name: 'jda-utilities', version: '3.0.3'
     
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
     //compile group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.30'
